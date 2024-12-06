@@ -1,6 +1,6 @@
 requests==2.31.0
 geopandas==0.14.1
-psycopg2-binary==2.9.9
+pg8000==1.30.3
 pyproj==3.6.1
 SQLAlchemy==2.0.23
 python-dotenv==1.0.0
@@ -11,3 +11,4 @@ shapely==2.0.2
 geojson==3.1.0
 jinja2==3.1.2
 aiofiles==23.2.1
+geoalchemy2==0.14.2

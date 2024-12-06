@@ -1,5 +1,6 @@
 import geopandas as gpd
 from sqlalchemy import create_engine
+from geoalchemy2 import Geometry
 from dotenv import load_dotenv
 import os
 
@@ -14,7 +15,7 @@ def get_db_engine():
         'user': os.getenv('DB_USER'),
         'password': os.getenv('DB_PASSWORD')
     }
-    connection_string = f"postgresql://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
+    connection_string = f"postgresql+pg8000://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
     return create_engine(connection_string)
 
 def load_karnataka_data():
@@ -43,7 +44,8 @@ def load_karnataka_data():
             name='countries',
             con=engine,
             if_exists='append',
-            index=False
+            index=False,
+            dtype={'geometry': Geometry('GEOMETRY', srid=4326)}
         )
         
         print("Data loaded successfully!")
@@ -51,6 +53,8 @@ def load_karnataka_data():
         
     except Exception as e:
         print(f"Error loading data: {str(e)}")
+        import traceback
+        print(traceback.format_exc())
         return False
 
 if __name__ == "__main__":
