@@ -1,0 +1,54 @@
+# Geospatial API Service
+
+A FastAPI-based RESTful service for managing geospatial data with PostgreSQL/PostGIS backend.
+
+## Features
+
+- CRUD operations for geospatial features
+- GeoJSON support
+- PostgreSQL/PostGIS integration
+- Docker containerization
+- Environment-based configuration
+- Input validation using Pydantic models
+
+## Prerequisites
+
+- Python 3.9 or higher
+- PostgreSQL with PostGIS extension
+- Docker (optional, for containerized deployment)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <your-repository-url>
+cd <repository-name>
+
+This README provides:
+1. A clear project overview
+2. Detailed setup instructions for both local and Docker environments
+3. API documentation
+4. Testing procedures
+5. Project structure
+6. Contributing guidelines
+
+To complete the documentation and testing setup, you should also:
+
+1. Create a `tests` directory with test files covering:
+   - API endpoint tests
+   - Database integration tests
+   - Input validation tests
+   - Error handling tests
+
+2. Set up a GitHub repository:
+   - Initialize git in your project directory
+   - Create a new repository on GitHub
+   - Add a `.gitignore` file to exclude sensitive files (like `.env`)
+   - Push your code to the repository
+
+3. Add additional documentation:
+   - Add inline code comments where necessary
+   - Create API documentation using FastAPI's automatic documentation features
+   - Document any specific database setup requirements
+
+Would you like me to provide any specific section of this documentation in more detail or help you set up the testing infrastructure?

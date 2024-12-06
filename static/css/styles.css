@@ -1,0 +1,24 @@
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.list-group-item.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+textarea {
+    font-family: monospace;
+}
+
+.btn {
+    margin-right: 0.5rem;
+}
