@@ -15,7 +15,7 @@ def get_db_engine():
         'user': os.getenv('DB_USER'),
         'password': os.getenv('DB_PASSWORD')
     }
-    connection_string = f"postgresql+pg8000://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
+    connection_string = f"postgresql://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
     return create_engine(connection_string)
 
 def load_karnataka_data():

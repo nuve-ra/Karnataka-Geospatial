@@ -1,22 +1,28 @@
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request, Depends
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
+from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 import os
-import geojson
-from shapely.geometry import shape
-import geopandas as gpd
-from geoalchemy2.shape import to_shape
 import json
+
+# Import our local modules using relative imports
+from .models import Feature as DBFeature
+from .automatation.database import SessionLocal
 
 # Load environment variables
 load_dotenv()
 
+
+# Load environment variables
+load_dotenv()
+
+# Create FastAPI app
 app = FastAPI(title="Geospatial API", description="API for managing geospatial data")
 
 # Add CORS middleware
@@ -28,48 +34,43 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Templates
-templates = Jinja2Templates(directory="templates")
-
-# Database connection
-def get_db_engine():
-    db_params = {
-        'host': os.getenv('DB_HOST'),
-        'port': os.getenv('DB_PORT'),
-        'database': os.getenv('DB_NAME'),
-        'user': os.getenv('DB_USER'),
-        'password': os.getenv('DB_PASSWORD')
-    }
-    connection_string = f"postgresql://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
-    return create_engine(connection_string)
-
-# Pydantic models for request/response
-class GeometryBase(BaseModel):
-    type: str
-    coordinates: List
-
-class FeatureProperties(BaseModel):
+# Pydantic model for feature creation
+class FeatureCreate(BaseModel):
     name: str
     description: Optional[str] = None
+    geometry: Dict[str, Any]  # GeoJSON geometry
 
-class Feature(BaseModel):
-    type: str = "Feature"
-    geometry: GeometryBase
-    properties: FeatureProperties
+# Templates setup with absolute path
+templates = Jinja2Templates(directory=os.path.join(os.path.dirname(os.path.dirname(__file__)), "templates"))
 
-# API endpoints
-@app.get("/", response_class=HTMLResponse)
-async def frontend(request: Request):
-    """Serve the frontend HTML page"""
-    return templates.TemplateResponse("index.html", {"request": request})
+# Mount static files with absolute path
+app.mount("/static", StaticFiles(directory=os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")), name="static")
 
-@app.get("/api")
-async def root():
-    """API root endpoint"""
-    return {"message": "Welcome to the Geospatial API"}
+# Get database session
+def get_db():
+    database = SessionLocal()
+    try:
+        yield database
+    finally:
+        database.close()
+
+# Use it in endpoints like this:
+@app.post("/api/features")
+async def create_feature(feature: FeatureCreate, db_session: Session = Depends(get_db)):
+    try:
+        db_feature = DBFeature(
+            name=feature.name,
+            description=feature.description,
+            geometry=feature.geometry
+        )
+        db_session.add(db_feature)
+        db_session.commit()
+        db_session.refresh(db_feature)
+        return db_feature
+    except Exception as e:
+        print(f"Error creating feature: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/features")
 async def get_features(
@@ -78,125 +79,58 @@ async def get_features(
 ):
     """Get all features with pagination"""
     try:
-        engine = get_db_engine()
-        with engine.connect() as connection:
-            query = text("""
-                SELECT json_build_object(
-                    'type', 'FeatureCollection',
-                    'features', json_agg(
-                        json_build_object(
-                            'type', 'Feature',
-                            'id', gid,
-                            'geometry', ST_AsGeoJSON(geometry)::json,
-                            'properties', json_build_object(
-                                'name', name
-                            )
-                        )
-                    )
-                )
-                FROM (
-                    SELECT gid, geometry, name
-                    FROM countries
-                    LIMIT :limit OFFSET :offset
-                ) AS features;
-            """)
-            result = connection.execute(query, {"limit": limit, "offset": offset}).scalar()
-            return result if result else {"type": "FeatureCollection", "features": []}
+        db = next(get_db())
+        features = db.query(DBFeature).offset(offset).limit(limit).all()
+        return features
     except Exception as e:
+        print(f"Error getting features: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/features/{feature_id}")
 async def get_feature(feature_id: int):
     """Get a specific feature by ID"""
     try:
-        engine = get_db_engine()
-        with engine.connect() as connection:
-            query = text("""
-                SELECT json_build_object(
-                    'type', 'Feature',
-                    'id', gid,
-                    'geometry', ST_AsGeoJSON(geometry)::json,
-                    'properties', json_build_object(
-                        'name', name
-                    )
-                )
-                FROM countries
-                WHERE gid = :feature_id;
-            """)
-            result = connection.execute(query, {"feature_id": feature_id}).scalar()
-            if not result:
-                raise HTTPException(status_code=404, detail="Feature not found")
-            return result
+        db = next(get_db())
+        feature = db.query(DBFeature).filter(DBFeature.id == feature_id).first()
+        if feature is None:
+            raise HTTPException(status_code=404, detail="Feature not found")
+        return feature
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/api/features")
-async def create_feature(feature: Feature):
-    """Create a new feature"""
-    try:
-        engine = get_db_engine()
-        with engine.connect() as connection:
-            # Convert GeoJSON geometry to WKT
-            geom = shape(feature.geometry.dict())
-            query = text("""
-                INSERT INTO countries (geometry, name)
-                VALUES (ST_SetSRID(ST_GeomFromText(:wkt), 4326), :name)
-                RETURNING gid;
-            """)
-            result = connection.execute(
-                query,
-                {
-                    "wkt": geom.wkt,
-                    "name": feature.properties.name
-                }
-            ).scalar()
-            return {"id": result, "message": "Feature created successfully"}
-    except Exception as e:
+        print(f"Error getting feature: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.put("/api/features/{feature_id}")
-async def update_feature(feature_id: int, feature: Feature):
+async def update_feature(feature_id: int, feature: FeatureCreate):
     """Update an existing feature"""
     try:
-        engine = get_db_engine()
-        with engine.connect() as connection:
-            # Convert GeoJSON geometry to WKT
-            geom = shape(feature.geometry.dict())
-            query = text("""
-                UPDATE countries
-                SET geometry = ST_SetSRID(ST_GeomFromText(:wkt), 4326),
-                    name = :name
-                WHERE gid = :feature_id
-                RETURNING gid;
-            """)
-            result = connection.execute(
-                query,
-                {
-                    "wkt": geom.wkt,
-                    "name": feature.properties.name,
-                    "feature_id": feature_id
-                }
-            ).scalar()
-            if not result:
-                raise HTTPException(status_code=404, detail="Feature not found")
-            return {"message": "Feature updated successfully"}
+        db = next(get_db())
+        db_feature = db.query(DBFeature).filter(DBFeature.id == feature_id).first()
+        if db_feature is None:
+            raise HTTPException(status_code=404, detail="Feature not found")
+        
+        db_feature.name = feature.name
+        db_feature.description = feature.description
+        db_feature.geometry = feature.geometry
+        
+        db.commit()
+        db.refresh(db_feature)
+        return db_feature
     except Exception as e:
+        print(f"Error updating feature: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.delete("/api/features/{feature_id}")
 async def delete_feature(feature_id: int):
     """Delete a feature"""
     try:
-        engine = get_db_engine()
-        with engine.connect() as connection:
-            query = text("""
-                DELETE FROM countries
-                WHERE gid = :feature_id
-                RETURNING gid;
-            """)
-            result = connection.execute(query, {"feature_id": feature_id}).scalar()
-            if not result:
-                raise HTTPException(status_code=404, detail="Feature not found")
-            return {"message": "Feature deleted successfully"}
+        db = next(get_db())
+        feature = db.query(DBFeature).filter(DBFeature.id == feature_id).first()
+        if feature is None:
+            raise HTTPException(status_code=404, detail="Feature not found")
+        
+        db.delete(feature)
+        db.commit()
+        return {"message": "Feature deleted successfully"}
     except Exception as e:
+        print(f"Error deleting feature: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
