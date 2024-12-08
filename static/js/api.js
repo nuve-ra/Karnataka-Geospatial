@@ -1,6 +1,7 @@
 const API = {
     baseUrl: 'http://localhost:8000',
 
+    // Fetch a list of features with pagination support (limit and offset)
     async getFeatures(limit = 50, offset = 0) {
         try {
             const response = await fetch(`${this.baseUrl}/features?limit=${limit}&offset=${offset}`);
@@ -12,6 +13,7 @@ const API = {
         }
     },
 
+    // Fetch a single feature by its ID
     async getFeature(id) {
         try {
             const response = await fetch(`${this.baseUrl}/features/${id}`);
@@ -23,6 +25,7 @@ const API = {
         }
     },
 
+    // Create a new feature
     async createFeature(feature) {
         try {
             const response = await fetch(`${this.baseUrl}/features`, {
@@ -40,6 +43,7 @@ const API = {
         }
     },
 
+    // Update an existing feature by its ID
     async updateFeature(id, feature) {
         try {
             const response = await fetch(`${this.baseUrl}/features/${id}`, {
@@ -57,6 +61,7 @@ const API = {
         }
     },
 
+    // Delete a feature by its ID
     async deleteFeature(id) {
         try {
             const response = await fetch(`${this.baseUrl}/features/${id}`, {
@@ -70,3 +75,57 @@ const API = {
         }
     }
 };
+
+// Example Usage
+
+// Fetching features
+async function loadFeatures() {
+    try {
+        const features = await API.getFeatures(10, 0);  // Fetch first 10 features
+        console.log(features);
+    } catch (error) {
+        console.error('Failed to load features:', error);
+    }
+}
+
+// Creating a new feature
+const newFeature = {
+    name: 'New Feature',
+    description: 'A description of the new feature',
+    location: 'Some Location'
+};
+
+async function createNewFeature() {
+    try {
+        const createdFeature = await API.createFeature(newFeature);
+        console.log('Created Feature:', createdFeature);
+    } catch (error) {
+        console.error('Failed to create feature:', error);
+    }
+}
+
+// Updating a feature
+const updatedFeature = {
+    name: 'Updated Feature',
+    description: 'Updated description',
+    location: 'Updated Location'
+};
+
+async function updateExistingFeature(id) {
+    try {
+        const updated = await API.updateFeature(id, updatedFeature);
+        console.log('Updated Feature:', updated);
+    } catch (error) {
+        console.error('Failed to update feature:', error);
+    }
+}
+
+// Deleting a feature
+async function deleteFeature(id) {
+    try {
+        const deletedFeature = await API.deleteFeature(id);
+        console.log('Deleted Feature:', deletedFeature);
+    } catch (error) {
+        console.error('Failed to delete feature:', error);
+    }
+}

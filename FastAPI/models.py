@@ -1,6 +1,14 @@
+import os
+import sys
+
+# Add the FastAPI directory to the Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+
 from sqlalchemy import Column, Integer, String, DateTime, JSON
 from datetime import datetime
-from .automatation.database import Base  # Changed to relative import
+from automatation.database import Base
 
 class Feature(Base):
     __tablename__ = 'features'

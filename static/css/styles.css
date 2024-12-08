@@ -1,24 +1,145 @@
-.card {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.list-group-item {
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+
+/* Map Container */
+#map {
+    width: 100%;
+    height: 600px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 20px auto;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+.feature-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fafafa;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.list-group-item:hover {
-    background-color: #f8f9fa;
+.feature-card:hover {
+    background: #f1f1f1;
+    transform: translateY(-3px);
 }
 
-.list-group-item.active {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+.feature-card h6 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    color: #2c3e50;
 }
 
-textarea {
-    font-family: monospace;
+.feature-card small {
+    color: #7f8c8d;
 }
 
-.btn {
-    margin-right: 0.5rem;
+/* Form Styling */
+#featureForm {
+    margin-top: 15px;
+}
+
+#featureForm input,
+#featureForm textarea,
+#featureForm button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#featureForm button {
+    background: #2980b9;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#featureForm button:hover {
+    background: #1a5276;
+}
+
+/* Feature Info Panel */
+#featureInfo {
+    display: none;
+    padding: 10px;
+    margin-top: 15px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Map Controls */
+.map-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.map-controls button {
+    background: #2980b9;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.map-controls button:hover {
+    background: #1a5276;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #map {
+        height: 400px;
+    }
+
+    .sidebar {
+        width: 90%;
+        right: 5%;
+    }
 }

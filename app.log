@@ -1,0 +1,127 @@
+2024-12-07 22:18:46,748 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:18:46,757 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:19:04,360 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:19:04,366 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:20:35,178 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:20:35,184 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:21:22,718 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:21:22,725 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:24:33,414 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:24:33,424 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:24:33,426 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:24:33,427 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:25:12,892 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:25:12,907 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:25:12,914 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:25:12,915 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:25:34,809 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:25:34,815 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:25:34,815 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:25:34,815 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:29:35,249 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:29:35,254 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:29:35,255 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:29:35,255 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:31:21,996 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:31:22,001 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:31:22,044 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:31:22,044 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:34:35,580 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:34:35,583 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:34:35,584 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:34:35,584 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:38:59,718 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:38:59,725 - FastAPI.api - INFO - Static files path: c:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:38:59,725 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:38:59,726 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-07 22:39:21,318 - FastAPI.api - INFO - Database tables created successfully
+2024-12-07 22:39:21,327 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-07 22:39:21,329 - FastAPI.api - INFO - Static path exists: True
+2024-12-07 22:39:21,345 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 00:29:11,830 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 00:29:11,838 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 00:29:11,839 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 00:29:11,840 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 00:49:49,347 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 00:49:49,353 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 00:49:49,561 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 00:49:49,562 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 01:17:56,318 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 01:17:56,351 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 01:17:56,352 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 01:17:56,353 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 01:18:38,632 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 01:18:38,634 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 01:18:38,635 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 01:18:47,788 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:18:47,814 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:21:38,449 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:21:38,451 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:21:40,044 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:21:40,045 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:22:34,154 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:22:34,156 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:22:36,598 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:22:36,599 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:24:07,141 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 01:24:07,142 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 01:24:07,143 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 01:24:08,547 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:24:08,549 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:24:22,932 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:24:22,933 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 01:27:33,567 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 01:27:33,569 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 01:27:33,570 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 01:27:34,534 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 01:27:34,539 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 03:50:00,527 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 03:50:00,570 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 03:50:00,571 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 03:50:00,572 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 03:50:23,449 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 03:50:23,490 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 03:50:23,490 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 03:51:14,211 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 03:51:14,213 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 03:51:14,213 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 03:57:33,499 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 03:57:33,508 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 03:57:33,509 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 03:57:33,510 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 03:57:33,597 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 03:57:33,620 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 03:57:33,671 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:00:19,685 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 11:00:19,710 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 11:00:19,711 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 11:00:19,711 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 11:05:20,239 - FastAPI.api - INFO - Database tables created successfully
+2024-12-08 11:05:20,286 - FastAPI.api - INFO - Static files path: C:\Users\Nupoor Verma\Desktop\A AG of kD\static
+2024-12-08 11:05:20,287 - FastAPI.api - INFO - Static path exists: True
+2024-12-08 11:05:20,287 - FastAPI.api - INFO - Static path contents: ['css', 'favicon.ico', 'index.html', 'js']
+2024-12-08 11:05:48,018 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 11:05:48,019 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 11:05:48,339 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:12:05,354 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 11:12:05,357 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 11:12:05,359 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:12:11,116 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 11:12:11,230 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 11:13:47,985 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 11:13:47,987 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 11:13:47,988 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:13:48,185 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 11:13:48,194 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 11:13:51,929 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 11:13:51,930 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 11:14:51,859 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 11:14:51,860 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 11:14:51,862 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:14:52,097 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 11:14:52,104 - FastAPI.api - ERROR - Database session error: 
+2024-12-08 11:16:08,374 - FastAPI.api - INFO - Attempting to serve index.html from: C:\Users\Nupoor Verma\Desktop\A AG of kD\static\index.html
+2024-12-08 11:16:08,376 - FastAPI.api - INFO - Current working directory: C:\Users\Nupoor Verma\Desktop\A AG of kD
+2024-12-08 11:16:08,409 - FastAPI.api - INFO - Python path: ['C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Scripts\\uvicorn.exe', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Nupoor Verma\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\venv\\Lib\\site-packages', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD\\FastAPI', 'C:\\Users\\Nupoor Verma\\Desktop\\A AG of kD']
+2024-12-08 11:16:08,651 - FastAPI.api - ERROR - Unexpected error: the JSON object must be str, bytes or bytearray, not dict
+2024-12-08 11:16:08,653 - FastAPI.api - ERROR - Database session error: 
