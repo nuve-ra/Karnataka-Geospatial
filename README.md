@@ -17,13 +17,12 @@ Analysis: Coordinate Reference Systems (CRS) transformation, Spatial Joins, and 
 This project implements an automated pipeline to transform raw government spatial data into developer-ready formats.
 
 <img width="6978" height="1035" alt="image" src="https://github.com/user-attachments/assets/c9df8489-4884-43bd-8a3b-c6239b2e7618" />
-
-Layer Level,Description,Format
-State,High-level Karnataka state boundary.,.gpkg / .shp
-District,31 District boundaries including newly formed regions.,.gpkg / .shp
-Taluk,Sub-district administrative divisions.,.gpkg / .shp
-Constituencies,Assembly (AC) and Parliament (PC) boundaries.,.gpkg / .shp
-Village/Hobli,Micro-level local governance boundaries.,.gpkg / .kml
+Layer Level,Description,Formats
+📍 State,High-level Karnataka state boundary.,".gpkg, .shp"
+🏙️ District,"31 District boundaries, including newly formed regions like Vijayanagara.",".gpkg, .shp"
+🏢 Taluk,Sub-district administrative divisions for regional planning.,".gpkg, .shp"
+🗳️ Constituencies,Assembly (AC) and Parliament (PC) electoral boundaries.,".gpkg, .shp"
+🏡 Village/Hobli,Micro-level local governance boundaries for hyper-local analysis.,".gpkg, .kml"
 
 Key Technical Features
 Automated Data Fetching: Custom Python scripts to programmatically retrieve data layers from the KGIS portal.
@@ -52,3 +51,4 @@ Election Result Dashboards (Constituency-level mapping).
 Healthcare Accessibility Analysis (Mapping hospital reach in rural districts).
 
 Agricultural Insights (Soil and water mapping at the Hobli level).
+
