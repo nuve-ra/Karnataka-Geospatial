@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka GeoJSON Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        #map { width: 100%; height: 500px; }
+        #controls { padding: 10px; background: #f7f7f7; }
+        .feature-card { padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; cursor: pointer; }
+        .feature-card:hover { background: #f0f0f0; }
+        #featureInfo { display: none; margin-top: 10px; padding: 10px; background: #e7f4ff; border-left: 4px solid #3498db; }
+        #featureForm { margin-top: 10px; }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Karnataka GeoJSON CRUD Map</h1>
+    <div id="map"></div>
+    <div id="controls">
+        <button id="zoomIn">Zoom In</button>
+        <button id="zoomOut">Zoom Out</button>
+        <button id="fitBounds">Fit Bounds</button>
+        <button id="loadFeaturesBtn">Load Features</button>
+        <input type="text" id="searchFeatures" placeholder="Search features..." />
+        <div id="featureList"></div>
+        <div id="featureInfo"></div>
+        <form id="featureForm">
+            <label for="featureName">Feature Name:</label>
+            <input type="text" id="featureName" required />
+            <label for="featureGeometry">Geometry (GeoJSON):</label>
+            <textarea id="featureGeometry" rows="4" required></textarea>
+            <button id="saveFeature">Save</button>
+            <button id="deleteFeature" type="button" style="display: none;">Delete</button>
+        </form>
+    </div>
+
+    <script>
+        // State management
+        let currentPage = 0;
+        const pageSize = 50;
+        let selectedFeatureId = null;
+
+        // Map setup
+        const map = L.map('map').setView([15.3173, 75.7139], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Layers
+        const featuresLayer = L.geoJSON(null, {
+            style: { color: '#3498db', weight: 2, opacity: 0.8, fillOpacity: 0.35 },
+            onEachFeature: (feature, layer) => {
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: showFeatureInfo
+                });
+            }
+        }).addTo(map);
+
+        // Controls
+        document.getElementById('zoomIn').addEventListener('click', () => map.zoomIn());
+        document.getElementById('zoomOut').addEventListener('click', () => map.zoomOut());
+        document.getElementById('fitBounds').addEventListener('click', () => map.fitBounds([[11.5, 74], [18.5, 78.5]]));
+
+        // Search functionality
+        document.getElementById('searchFeatures').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.display = card.textContent.toLowerCase().includes(term) ? 'block' : 'none';
+            });
+        });
+
+        // Highlight feature on hover
+        function highlightFeature(e) {
+            e.target.setStyle({ weight: 3, color: '#2980b9', fillOpacity: 0.5 });
+        }
+
+        function resetHighlight(e) {
+            featuresLayer.resetStyle(e.target);
+        }
+
+        function showFeatureInfo(e) {
+            const feature = e.target.feature;
+            const info = document.getElementById('featureInfo');
+            info.innerHTML = `<strong>${feature.properties.name}</strong><p>${feature.properties.description || 'No description'}</p>`;
+            info.style.display = 'block';
+        }
+
+        // Load features
+        async function loadFeatures(page = 0) {
+            try {
+                const response = await fetch(`/api/features/?limit=${pageSize}&offset=${page * pageSize}`);
+                if (!response.ok) throw new Error(`Failed to load features: ${response.statusText}`);
+                const data = await response.json();
+                
+                // Update UI
+                const featureList = document.getElementById('featureList');
+                featureList.innerHTML = '';
+                featuresLayer.clearLayers();
+
+                data.forEach(feature => {
+                    const card = document.createElement('div');
+                    card.className = 'feature-card';
+                    card.innerHTML = `<h6>${feature.name}</h6><small>${feature.description || 'No description'}</small>`;
+                    card.addEventListener('click', () => selectFeature(feature));
+                    featureList.appendChild(card);
+
+                    featuresLayer.addData({
+                        type: 'Feature',
+                        properties: feature,
+                        geometry: feature.geometry
+                    });
+                });
+
+                if (data.length > 0) map.fitBounds(featuresLayer.getBounds());
+                currentPage = page;
+            } catch (error) {
+                console.error(error);
+                document.getElementById('featureList').innerHTML = `<p>Error loading features: ${error.message}</p>`;
+            }
+        }
+
+        // Feature form
+        async function handleFeatureSubmit(e) {
+            e.preventDefault();
+            try {
+                const url = selectedFeatureId 
+                    ? `/api/features/${selectedFeatureId}` 
+                    : '/api/features/';
+                const method = selectedFeatureId ? 'PUT' : 'POST';
+                const response = await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('featureName').value,
+                        geometry: JSON.parse(document.getElementById('featureGeometry').value)
+                    })
+                });
+                if (!response.ok) throw new Error(`Failed to save feature: ${response.statusText}`);
+                loadFeatures(currentPage);
+                clearForm();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        async function handleFeatureDelete() {
+            if (!selectedFeatureId) return;
+            try {
+                const response = await fetch(`/api/features/${selectedFeatureId}`, { method: 'DELETE' });
+                if (!response.ok) throw new Error(`Failed to delete feature: ${response.statusText}`);
+                loadFeatures(currentPage);
+                clearForm();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function selectFeature(feature) {
+            selectedFeatureId = feature.id;
+            document.getElementById('featureName').value = feature.name;
+            document.getElementById('featureGeometry').value = JSON.stringify(feature.geometry, null, 2);
+            document.getElementById('deleteFeature').style.display = 'inline-block';
+        }
+
+        function clearForm() {
+            selectedFeatureId = null;
+            document.getElementById('featureName').value = '';
+            document.getElementById('featureGeometry').value = '';
+            document.getElementById('deleteFeature').style.display = 'none';
+        }
+
+        // Event listeners
+        document.getElementById('featureForm').addEventListener('submit', handleFeatureSubmit);
+        document.getElementById('deleteFeature').addEventListener('click', handleFeatureDelete);
+        document.getElementById('loadFeaturesBtn').addEventListener('click', () => loadFeatures(currentPage));
+
+        // Initial load
+        loadFeatures();
+    </script>
+</body>
+</html>
