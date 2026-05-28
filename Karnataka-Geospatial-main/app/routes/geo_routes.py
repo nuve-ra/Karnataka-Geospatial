@@ -2,13 +2,15 @@ from fastapi import APIRouter
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from fastapi.responses import JSONResponse
-from ..schema.feature_schema import FeatureResponse
+from app.schema.feature_schema import FeatureResponse
+from shapely.geometry import shape
+from geoalchemy2.shape import from_shape
 
 import json
 
 from app.database import SessionLocal
 from app.models import GeoFeature
-from app.utils.logger import logger
+from app.utils.logger  import logger
 
 router = APIRouter(
     prefix="/features",
@@ -59,6 +61,61 @@ def get_features(
 
         return {
             "error": "Failed to fetch features"
+        }
+
+    finally:
+
+        db.close()
+        # -----------------------------------
+# CREATE NEW FEATURE
+# -----------------------------------
+
+@router.post("/")
+def create_feature(
+    feature: dict
+):
+
+    db: Session = SessionLocal()
+
+    try:
+
+        geometry_data = feature.get(
+            "geometry"
+        )
+
+        geometry_shape = shape(
+            geometry_data
+        )
+
+        geometry = from_shape(
+            geometry_shape,
+            srid=4326
+        )
+
+        new_feature = GeoFeature(
+            name=feature.get("name"),
+            geometry=geometry
+        )
+
+        db.add(new_feature)
+
+        db.commit()
+
+        db.refresh(new_feature)
+
+        return {
+            "message": "Feature created",
+            "id": new_feature.id
+        }
+
+    except Exception as e:
+
+        logger.error(
+            f"Error creating feature: {str(e)}"
+        )
+
+        return {
+            "error": "Failed to create feature"
         }
 
     finally:
@@ -211,12 +268,58 @@ def bbox_search(
         db.close()
 
 
+
+# -------------------------
+# GET ALL GEOJSON FEATURES
+# -------------------------
+
+@router.get("/geojson/all")
+def get_all_geojson():
+
+    db: Session = SessionLocal()
+
+    query = text("""
+
+        SELECT
+            id,
+            name,
+            ST_AsGeoJSON(geometry) AS geometry
+        FROM geo_features
+
+    """)
+
+    results = db.execute(query)
+
+    features = []
+
+    for row in results:
+
+        features.append({
+            "type": "Feature",
+            "geometry": json.loads(
+                row.geometry
+            ),
+            "properties": {
+                "id": row.id,
+                "name": row.name
+            }
+        })
+
+    db.close()
+
+    return {
+        "type": "FeatureCollection",
+        "features": features
+    }
+
 # -----------------------------------
-# GEOJSON RESPONSE
+# GET SINGLE GEOJSON FEATURE
 # -----------------------------------
 
 @router.get("/geojson/{feature_id}")
-def get_feature_geojson(feature_id: int):
+def get_feature_geojson(
+    feature_id: int
+):
 
     logger.info(
         f"Fetching GeoJSON feature id={feature_id}"
@@ -252,7 +355,9 @@ def get_feature_geojson(feature_id: int):
 
         geojson_feature = {
             "type": "Feature",
-            "geometry": json.loads(result.geometry),
+            "geometry": json.loads(
+                result.geometry
+            ),
             "properties": {
                 "id": result.id,
                 "name": result.name
@@ -276,17 +381,18 @@ def get_feature_geojson(feature_id: int):
     finally:
 
         db.close()
+       
+# ---------------------------------
+# DELETE FEATURE
+# ---------------------------------
 
-
-# -----------------------------------
-# GET FEATURE BY ID
-# -----------------------------------
-
-@router.get("/{feature_id}")
-def get_feature(feature_id: int):
+@router.delete("/{feature_id}")
+def delete_feature(
+    feature_id: int
+):
 
     logger.info(
-        f"Fetching feature id={feature_id}"
+        f"Deleting feature id={feature_id}"
     )
 
     db: Session = SessionLocal()
@@ -305,21 +411,91 @@ def get_feature(feature_id: int):
                 "error": "Feature not found"
             }
 
+        db.delete(feature)
+
+        db.commit()
+
         return {
-            "id": feature.id,
-            "name": feature.name
+            "message": "Feature deleted successfully"
         }
 
     except Exception as e:
 
         logger.error(
-            f"Error fetching feature: {str(e)}"
+            f"Delete failed: {str(e)}"
         )
 
         return {
-            "error": "Failed to fetch feature"
+            "error": "Failed to delete feature"
         }
 
     finally:
 
         db.close()
+
+# --------------------------------- # UPDATE FEATURE # ---------------------------------
+@router.put("/{feature_id}")
+def update_feature(
+    feature_id: int,
+    feature_data: dict
+):
+        logger.info(
+            f"Updating feature id={feature_id}"
+        )
+
+        db: Session =SessionLocal()
+        try:
+
+            #Finding existing features
+            feature = db.query(
+                GeoFeature
+            ).filter(
+                GeoFeature.id == feature_id
+            ).first()
+
+            if not feature:
+
+                return{
+                    "error":"Feature not found"
+                }
+            #Updating Name
+            feature.name = feature_data.get(
+                "name",
+                feature.name
+            )
+
+            #Updating Geometry
+            geometry_data=feature_data.get(
+                "geometry"
+            )
+
+            if geometry_data:
+                geometry_shape=shape(
+                    geometry_data
+                )
+
+                geometry=from_shape(
+                    geometry_shape,
+                    srid=4326
+                )
+
+                feature.geometry=geometry
+            db.commit()
+
+            return{
+                "message":"Feature updated successully"
+            }
+        except Exception as e:
+
+            logger.error(
+                f"Update failed: {str(e)}"
+            )
+
+            db.rollback()
+
+            return{
+                "error":"Failed to update feature"
+            }
+        finally:
+            db.close()
+        
