@@ -262,13 +262,7 @@
         <span>.</span>
         <span>.</span>
       </div>
-
-      <!-- FEATURE LIST -->
-
-      <div id="featureList"></div>
-
       <!-- FEATURE INFO -->
-
       <div id="featureInfo"></div>
 
       <!-- FORM -->
@@ -290,6 +284,14 @@
           </button>
         </div>
       </form>
+
+      <!-- FEATURE LIST -->
+
+      <div id="featureList"></div>
+
+      <!-- FEATURE INFO -->
+
+      <!-- <div id="featureInfo"></div> -->
     </div>
 
     <!-- LEAFLET JS -->
@@ -381,25 +383,10 @@
       // ---------------------------------
       // FEATURE INFO
       // ---------------------------------
-
       function showFeatureInfo(e) {
         const feature = e.target.feature;
-
         const info = document.getElementById("featureInfo");
-
-        info.innerHTML = `
-
-                <strong>
-                    ${feature.properties.name}
-                </strong>
-
-                <br>
-
-                ID:
-                ${feature.properties.id}
-
-            `;
-
+        info.innerHTML = ` <h3> ${feature.properties.name} </h3> <p> <strong>ID:</strong> ${feature.properties.id} </p> <p> <strong>Geometry Type:</strong> ${feature.geometry.type} </p> <details open> <summary> View GeoJSON </summary> <pre style=" max-height:300px; overflow:auto; background:#f4f4f4; padding:10px; border-radius:6px; font-size:12px; " > ${JSON.stringify(feature, null, 2)} </pre> </details> `;
         info.style.display = "block";
       }
 
@@ -466,6 +453,7 @@
               });
 
               selectFeature(feature);
+              showFeatureInfo({ target: { feature: feature } });
             });
 
             document.getElementById("featureList").appendChild(card);
